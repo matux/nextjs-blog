@@ -1,7 +1,56 @@
-import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import Link from 'next/link'
+import Head from 'next/head'
+import styles from '../styles/Home.module.css'
+import React, { useEffect, useState } from 'react'
+import { Provider, ErrorBoundary, useRollbar } from '@rollbar/react'
 
-export default function Home() {
+const rollbarConfig = {
+  accessToken: '42a66171fc664f7cb2638fce82de3185',
+  endpoint: 'http://localhost:8000/api/1/item',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+  environment: 'production',
+  server: {
+    root: 'http://example.com/',
+    branch: 'main',
+  },
+  code_version: '0.13.7',
+  person: {
+    id: 117,
+    email: 'chief@unsc.gov',
+    username: 'john-halo',
+  },
+};
+
+export default function App() {
+  return (
+    <Provider config={rollbarConfig}>
+      <ErrorBoundary>
+        <Home />
+        <AnotherError />
+      </ErrorBoundary>
+    </Provider>
+  );
+}
+
+function TestError() {
+  const a = null
+  return a.hello()
+}
+
+function AnotherError() {
+  const rollbar = useRollbar()
+  const [flag, setFlag] = useState(false)
+
+  useEffect(() => {
+    const a = null
+    setFlag(true)
+    // a.hello()
+  })
+  return (<>{flag}</>)
+}
+
+function Home() {
   return (
     <div className={styles.container}>
       <Head>
@@ -11,7 +60,7 @@ export default function Home() {
 
       <main>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Read <Link href="https://nextjs.org">Next.js!</Link>
         </h1>
 
         <p className={styles.description}>
@@ -92,15 +141,8 @@ export default function Home() {
           border-radius: 5px;
           padding: 0.75rem;
           font-size: 1.1rem;
-          font-family:
-            Menlo,
-            Monaco,
-            Lucida Console,
-            Liberation Mono,
-            DejaVu Sans Mono,
-            Bitstream Vera Sans Mono,
-            Courier New,
-            monospace;
+          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
         }
       `}</style>
 
@@ -109,17 +151,8 @@ export default function Home() {
         body {
           padding: 0;
           margin: 0;
-          font-family:
-            -apple-system,
-            BlinkMacSystemFont,
-            Segoe UI,
-            Roboto,
-            Oxygen,
-            Ubuntu,
-            Cantarell,
-            Fira Sans,
-            Droid Sans,
-            Helvetica Neue,
+          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
         }
         * {
@@ -127,5 +160,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  );
+  )
 }
