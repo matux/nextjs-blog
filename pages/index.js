@@ -45,7 +45,7 @@ function AnotherError() {
   useEffect(() => {
     const a = null
     setFlag(true)
-    // a.hello()
+    a.hello()
   })
   return (<>{flag}</>)
 }
