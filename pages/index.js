@@ -9,7 +9,7 @@ const rollbarConfig = {
   endpoint: 'http://localhost:8000/api/1/item',
   captureUncaught: true,
   captureUnhandledRejections: true,
-  environment: 'production',
+  environment: 'testenv',
   server: {
     root: 'http://example.com/',
     branch: 'main',
