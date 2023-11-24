@@ -5,24 +5,34 @@ import React, { useEffect, useState } from 'react'
 import { Provider, ErrorBoundary, useRollbar } from '@rollbar/react'
 
 const rollbarConfig = {
-  accessToken: '42a66171fc664f7cb2638fce82de3185',
+  accessToken: '58c289a918524b74b4f768a7dbe8bc7f',
   endpoint: 'http://localhost:8000/api/1/item',
   captureUncaught: true,
   captureUnhandledRejections: true,
-  environment: 'testenv',
-  server: {
-    root: 'http://example.com/',
-    branch: 'main',
-  },
-  code_version: '0.13.7',
-  person: {
-    id: 117,
-    email: 'chief@unsc.gov',
-    username: 'john-halo',
+  payload: {
+    environment: 'testenv',
+    code_version: '8be5a06',
+    client: {
+      javascript: {
+        source_map_enabled: true,
+        code_version: '8be5a06',
+        guess_uncaught_frames: true,
+      },
+    },
+    server: {
+      root: 'http://localhost:3001/',
+      branch: 'main',
+    },
+    person: {
+      id: 117,
+      email: 'chief@unsc.gov',
+      username: 'john-halo',
+    },
   },
 };
 
 export default function App() {
+  console.log(rollbarConfig)
   return (
     <Provider config={rollbarConfig}>
       <ErrorBoundary>
@@ -47,6 +57,7 @@ function AnotherError() {
     setFlag(true)
     a.hello()
   })
+
   return (<>{flag}</>)
 }
 
