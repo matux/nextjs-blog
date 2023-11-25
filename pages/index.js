@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { Provider, ErrorBoundary, useRollbar } from '@rollbar/react'
 
 const rollbarConfig = {
-  accessToken: '58c289a918524b74b4f768a7dbe8bc7f',
+  accessToken: '650098f269e14a71a3ee037c25dfcc82',
   endpoint: 'http://localhost:8000/api/1/item',
   captureUncaught: true,
   captureUnhandledRejections: true,
@@ -37,7 +37,6 @@ export default function App() {
     <Provider config={rollbarConfig}>
       <ErrorBoundary>
         <Home />
-        <AnotherError />
       </ErrorBoundary>
     </Provider>
   );
