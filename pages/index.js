@@ -24,9 +24,9 @@ const rollbarConfig = {
       branch: 'main',
     },
     person: {
-      id: 117,
-      email: 'chief@unsc.gov',
-      username: 'john-halo',
+      id: 1234,
+      email: 'local@host.com',
+      username: 'localuser',
     },
   },
 };
