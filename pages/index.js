@@ -37,6 +37,7 @@ export default function App() {
     <Provider config={rollbarConfig}>
       <ErrorBoundary>
         <Home />
+        <AnotherError />
       </ErrorBoundary>
     </Provider>
   );
