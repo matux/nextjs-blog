@@ -20,7 +20,7 @@ const rollbarConfig = {
       },
     },
     server: {
-      root: 'http://localhost:3001/',
+      root: 'https://raw.githubusercontent.com/matux/nextjs-blog/main/',
       branch: 'main',
     },
     person: {
