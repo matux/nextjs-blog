@@ -5,22 +5,22 @@ import React, { useEffect, useState } from 'react'
 import { Provider, ErrorBoundary, useRollbar } from '@rollbar/react'
 
 const rollbarConfig = {
-  accessToken: '34dd046227094880a7b8c67fab3a810c',
-  endpoint: 'http://localhost:8000/api/1/item',
+  accessToken: '37f08875d00d474cbb34f7fe661878fa',
+  endpoint: 'https://api.rollbar.com/api/1/item', //'https://api.rollbar.com/api/1/item', //'http://localhost:8000/api/1/item',
   captureUncaught: true,
   captureUnhandledRejections: true,
   payload: {
     environment: 'testenv',
-    code_version: '8be5a06',
+    code_version: 'cf29e4a',
     client: {
       javascript: {
         source_map_enabled: true,
-        code_version: '8be5a06',
+        code_version: 'cf29e4a',
         guess_uncaught_frames: true,
       },
     },
     server: {
-      root: 'http://localhost:3001/',
+      root: 'webpack://_N_E/./pages/',
       branch: 'main',
     },
     person: {
