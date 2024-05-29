@@ -1,38 +1,38 @@
-import Link from 'next/link'
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import React, { useEffect, useState } from 'react'
-import { Provider, ErrorBoundary, useRollbar } from '@rollbar/react'
+import Link from "next/link";
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import React, { useEffect, useState } from "react";
+import { Provider, ErrorBoundary, useRollbar } from "@rollbar/react";
 
 const rollbarConfig = {
-  accessToken: '37f08875d00d474cbb34f7fe661878fa',
-  endpoint: 'https://api.rollbar.com/api/1/item', //'https://api.rollbar.com/api/1/item', //'http://localhost:8000/api/1/item',
+  accessToken: "bc2598bfaf8b4ca280070633e65b08b2",
+  endpoint: "http://localhost:8000/api/1/item", //'https://api.rollbar.com/api/1/item',
   captureUncaught: true,
   captureUnhandledRejections: true,
   payload: {
-    environment: 'testenv',
-    code_version: 'cf29e4a',
+    environment: "testenv",
+    code_version: "cf29e4a",
     client: {
       javascript: {
         source_map_enabled: true,
-        code_version: 'cf29e4a',
+        code_version: "cf29e4a",
         guess_uncaught_frames: true,
       },
     },
     server: {
-      root: 'webpack://_N_E/./pages/',
-      branch: 'main',
+      root: "webpack://_N_E/./pages/",
+      branch: "main",
     },
     person: {
       id: 1234,
-      email: 'local@host.com',
-      username: 'localuser',
+      email: "local@host.com",
+      username: "localuser",
     },
   },
 };
 
 export default function App() {
-  console.log(rollbarConfig)
+  console.log(rollbarConfig);
   return (
     <Provider config={rollbarConfig}>
       <ErrorBoundary>
@@ -44,24 +44,30 @@ export default function App() {
 }
 
 function TestError() {
-  const a = null
-  return a.hello()
+  const a = null;
+  return a.hello();
 }
 
 function AnotherError() {
-  const rollbar = useRollbar()
-  const [flag, setFlag] = useState(false)
+  const rollbar = useRollbar();
+  const [flag, setFlag] = useState(false);
 
   useEffect(() => {
-    const a = null
-    setFlag(true)
-    a.hello()
-  })
+    const a = null;
+    setFlag(true);
+    a.hello();
+  });
 
-  return (<>{flag}</>)
+  return <>{flag}</>;
 }
 
 function Home() {
+  const rollbar = useRollbar();
+
+  useEffect(() => {
+    rollbar.
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -115,7 +121,7 @@ function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
         </a>
       </footer>
@@ -171,5 +177,5 @@ function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }
