@@ -5,8 +5,9 @@ import React, { useEffect, useState } from "react";
 import { Provider, ErrorBoundary, useRollbar } from "@rollbar/react";
 
 const rollbarConfig = {
-  accessToken: "bc2598bfaf8b4ca280070633e65b08b2",
-  endpoint: "http://localhost:8000/api/1/item", //'https://api.rollbar.com/api/1/item',
+  accessToken: "8c0cedcdc9f64bf0a6de4b858abb8f65",
+  endpoint: "http://localhost:8000/api/1/item", 
+    //'https://api.rollbar.com/api/1/item',
   captureUncaught: true,
   captureUnhandledRejections: true,
   payload: {
@@ -18,8 +19,10 @@ const rollbarConfig = {
         code_version: "cf29e4a",
         guess_uncaught_frames: true,
       },
+      user_ip: "2001:268:98d5:9c3c:699f:9ef8:14fa:1050",
     },
     server: {
+      host: "web:1",
       root: "webpack://_N_E/./pages/",
       branch: "main",
     },
@@ -62,12 +65,6 @@ function AnotherError() {
 }
 
 function Home() {
-  const rollbar = useRollbar();
-
-  useEffect(() => {
-    rollbar.
-  }, []);
-
   return (
     <div className={styles.container}>
       <Head>
