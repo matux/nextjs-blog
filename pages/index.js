@@ -5,9 +5,9 @@ import React, { useEffect, useState } from "react";
 import { Provider, ErrorBoundary, useRollbar } from "@rollbar/react";
 
 const rollbarConfig = {
-  accessToken: "d4fdef83e25a48309c558bc70691d46e",
-  endpoint: "http://localhost:8000/api/1/item",
-  //'https://api.rollbar.com/api/1/item',
+  accessToken: "edd42e75a1f64fbdb534b174079f0bb1",
+  endpoint: "https://api.rollbar.com/api/1/item",
+  //endpoint: "http://localhost:8000/api/1/item",
   captureUncaught: true,
   captureUnhandledRejections: true,
   payload: {
