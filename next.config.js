@@ -1,9 +1,15 @@
-module.exports = {
-  webpack(config, { isServer })  {
-    if (!isServer) {
-      config.devtool = 'source-map'
-    }
+const path = require("path");
 
-    return config
-  }
-}
+module.exports = {
+  webpack(config, { isServer }) {
+    config.devtool = "source-map";
+    config.optimization.minimize = false;
+
+    config.resolve.alias.rollbar = path.resolve(
+      __dirname,
+      "../../rollbar/rollbar-js"
+    );
+
+    return config;
+  },
+};

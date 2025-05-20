@@ -3,9 +3,11 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import React, { useEffect, useState } from "react";
 import { Provider, ErrorBoundary, useRollbar } from "@rollbar/react";
+import Rollbar from "rollbar/src/browser/rollbar";
 
 const rollbarConfig = {
-  accessToken: "edd42e75a1f64fbdb534b174079f0bb1",
+  //accessToken: "edd42e75a1f64fbdb534b174079f0bb1",
+  accessToken: "d8c0f28d2b3744ed9cf4aebe54c21dd0", // rollbardev:SeshRep01
   endpoint: "https://api.rollbar.com/api/1/item",
   //endpoint: "http://localhost:8000/api/1/item",
   captureUncaught: true,
@@ -35,12 +37,14 @@ const rollbarConfig = {
 };
 
 export default function App() {
-  console.log(rollbarConfig);
+  //console.log(rollbarConfig);
+  const rollbar = new Rollbar(rollbarConfig);
+
   return (
-    <Provider config={rollbarConfig}>
+    <Provider instance={rollbar}>
       <ErrorBoundary>
         <Home />
-        <AnotherError />
+        {/* <AnotherError /> */}
       </ErrorBoundary>
     </Provider>
   );
@@ -65,6 +69,36 @@ function AnotherError() {
 }
 
 function Home() {
+  const rollbar = useRollbar();
+
+  // Function to trigger a manually reported error
+  const triggerManualError = () => {
+    try {
+      // Simulate an error
+      throw new Error("Manually triggered error for Rollbar testing");
+    } catch (error) {
+      // Manually report to Rollbar
+      rollbar.error("Manual error caught and reported", error);
+      alert("Error reported to Rollbar successfully!");
+    }
+  };
+
+  // Function to trigger an uncaught error
+  const triggerUncaughtError = () => {
+    // This will cause an uncaught error that Rollbar should catch
+    const nullObject = null;
+    nullObject.nonExistentMethod();
+  };
+
+  // Function to trigger an error in a promise
+  const triggerPromiseError = () => {
+    // This creates a rejected promise that should be caught by Rollbar
+    new Promise((resolve, reject) => {
+      reject(new Error("Promise rejection for Rollbar testing"));
+    });
+    alert("Promise error triggered!");
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -80,6 +114,29 @@ function Home() {
         <p className={styles.description}>
           Get started by editing <code>pages/index.js</code>
         </p>
+
+        {/* Rollbar Test Buttons */}
+        <div className={styles.errorButtons}>
+          <h2>Rollbar Error Testing</h2>
+          <button 
+            onClick={triggerManualError}
+            className={styles.errorButton}
+          >
+            Trigger Manual Error
+          </button>
+          <button 
+            onClick={triggerUncaughtError}
+            className={styles.errorButton}
+          >
+            Trigger Uncaught Error
+          </button>
+          <button 
+            onClick={triggerPromiseError}
+            className={styles.errorButton}
+          >
+            Trigger Promise Rejection
+          </button>
+        </div>
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
