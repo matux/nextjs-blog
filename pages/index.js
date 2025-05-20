@@ -12,6 +12,13 @@ const rollbarConfig = {
   //endpoint: "http://localhost:8000/api/1/item",
   captureUncaught: true,
   captureUnhandledRejections: true,
+  recorder: {
+    enabled: true,
+    autoStart: true, // Start recording automatically when Rollbar initializes
+    debug: {
+      logEmits: true, // Whether to log emitted events
+    },
+  },
   payload: {
     environment: "testenv",
     code_version: "cf29e4a",
@@ -118,22 +125,13 @@ function Home() {
         {/* Rollbar Test Buttons */}
         <div className={styles.errorButtons}>
           <h2>Rollbar Error Testing</h2>
-          <button 
-            onClick={triggerManualError}
-            className={styles.errorButton}
-          >
+          <button onClick={triggerManualError} className={styles.errorButton}>
             Trigger Manual Error
           </button>
-          <button 
-            onClick={triggerUncaughtError}
-            className={styles.errorButton}
-          >
+          <button onClick={triggerUncaughtError} className={styles.errorButton}>
             Trigger Uncaught Error
           </button>
-          <button 
-            onClick={triggerPromiseError}
-            className={styles.errorButton}
-          >
+          <button onClick={triggerPromiseError} className={styles.errorButton}>
             Trigger Promise Rejection
           </button>
         </div>

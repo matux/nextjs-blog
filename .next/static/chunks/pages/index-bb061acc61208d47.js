@@ -7588,6 +7588,13 @@ const rollbarConfig = {
     //endpoint: "http://localhost:8000/api/1/item",
     captureUncaught: true,
     captureUnhandledRejections: true,
+    recorder: {
+        enabled: true,
+        autoStart: true,
+        debug: {
+            logEmits: true
+        }
+    },
     payload: {
         environment: "testenv",
         code_version: "cf29e4a",
@@ -8729,4 +8736,4 @@ module.exports = {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=index-3292bdb869edc1c5.js.map
+//# sourceMappingURL=index-bb061acc61208d47.js.map
