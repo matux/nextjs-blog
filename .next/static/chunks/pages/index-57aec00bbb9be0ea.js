@@ -3042,8 +3042,8 @@ class Tracing {
     return {
       attributes: {
         ...(this.options.resource || {}),
-        'rollbar.environment': this.options.environment,
-      }
+        'rollbar.environment': this.options.payload.environment,
+      },
     };
   }
 
@@ -3083,7 +3083,12 @@ class Tracing {
 
   withSpan(name, options, fn, thisArg) {
     const span = this.startSpan(name, options);
-    return this.with(this.setSpan(this.contextManager.active(), span), fn, thisArg, span);
+    return this.with(
+      this.setSpan(this.contextManager.active(), span),
+      fn,
+      thisArg,
+      span,
+    );
   }
 }
 
@@ -5734,7 +5739,7 @@ __webpack_require__.r(__webpack_exports__);
  * See https://github.com/rrweb-io/rrweb/blob/master/guide.md#options for details
  */
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  enabled: true, // Whether recording is enabled
+  enabled: false, // Whether recording is enabled
   autoStart: true, // Start recording automatically when Rollbar initializes
   debug: {
     logEmits: false, // Whether to log emitted events
@@ -8736,4 +8741,4 @@ module.exports = {
 /******/ _N_E = __webpack_exports__;
 /******/ }
 ]);
-//# sourceMappingURL=index-bb061acc61208d47.js.map
+//# sourceMappingURL=index-57aec00bbb9be0ea.js.map
