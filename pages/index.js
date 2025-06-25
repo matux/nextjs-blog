@@ -6,10 +6,12 @@ import { Provider, ErrorBoundary, useRollbar } from "@rollbar/react";
 import Rollbar from "rollbar/src/browser/rollbar";
 
 const rollbarConfig = {
-  //accessToken: "edd42e75a1f64fbdb534b174079f0bb1",
-  accessToken: "d8c0f28d2b3744ed9cf4aebe54c21dd0", // rollbardev:SeshRep01
-  endpoint: "https://api.rollbar.com/api/1/item",
-  //endpoint: "http://localhost:8000/api/1/item",
+  accessToken:
+    "f7db1bf59c26440ba807c609ab2be17e16d9d00b7eb0cce6840c7b1f92f8d383046901135a253736922ff9bd8c73e5e3",
+  //"bc68f1eafc124f40bcf40421017c4dc414bd76b7658c2e766f4a177c7a435091bfbb0c51c41fd96242633083f37ad775",
+  //accessToken: "d8c0f28d2b3744ed9cf4aebe54c21dd0", // rollbardev:SeshRep01
+  //endpoint: "https://api.rollbar.com/api/1/item",
+  endpoint: "http://localhost:8000/api/1/item",
   captureUncaught: true,
   captureUnhandledRejections: true,
   recorder: {
