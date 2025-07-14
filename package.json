@@ -6,7 +6,7 @@
     "start": "next start -p 3001"
   },
   "dependencies": {
-    "@rollbar/react": "^0.12.1",
+    "@rollbar/react": "file:../../rollbar/rollbar-react",
     "next": "latest",
     "prop-types": "^15.8.1",
     "react": "18.2.0",
