@@ -9,7 +9,8 @@ const rollbarConfig = {
   accessToken:
     //"f7db1bf59c26440ba807c609ab2be17e16d9d00b7eb0cce6840c7b1f92f8d383046901135a253736922ff9bd8c73e5e3",
     //"bc68f1eafc124f40bcf40421017c4dc414bd76b7658c2e766f4a177c7a435091bfbb0c51c41fd96242633083f37ad775",
-    "9404900857d940bb97fbfdd931266a53",
+    // "9404900857d940bb97fbfdd931266a53",
+    process.env.NEXT_PUBLIC_ROLLBAR_CLIENT_TOKEN,
   //accessToken: "d8c0f28d2b3744ed9cf4aebe54c21dd0", // rollbardev:SeshRep01
   //endpoint: "https://api.rollbar.com/api/1/item",
   endpoint: "http://localhost:8000/api/1/item",
@@ -214,8 +215,15 @@ function Home() {
           border-radius: 5px;
           padding: 0.75rem;
           font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+          font-family:
+            Menlo,
+            Monaco,
+            Lucida Console,
+            Liberation Mono,
+            DejaVu Sans Mono,
+            Bitstream Vera Sans Mono,
+            Courier New,
+            monospace;
         }
       `}</style>
 
@@ -224,8 +232,17 @@ function Home() {
         body {
           padding: 0;
           margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+          font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            Segoe UI,
+            Roboto,
+            Oxygen,
+            Ubuntu,
+            Cantarell,
+            Fira Sans,
+            Droid Sans,
+            Helvetica Neue,
             sans-serif;
         }
         * {

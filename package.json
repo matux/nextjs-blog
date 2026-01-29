@@ -11,7 +11,7 @@
     "prop-types": "^15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "rollbar": "file:../../rollbar/rollbar-js"
+    "rollbar": "^3.0.0-rc.1"
   },
   "engines": {
     "node": ">=18"
